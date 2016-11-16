@@ -25,8 +25,8 @@ var render = function (count) {
 render(0,1);
 
 function initializeRenderData(data) {
-  var light = new THREE.PointLight(0xcccccc,3,0);
-  light.position.set(100,100,100);
+  var light = new THREE.PointLight(0xcccccc,1,0);
+  light.position.set(100,500,100);
   scene.add(light);
 
   var grid = new THREE.Geometry();
@@ -53,7 +53,13 @@ function initializeRenderData(data) {
   grid.computeFaceNormals();
   grid.computeVertexNormals();
 
-  var gridMesh = new THREE.Mesh(grid, new THREE.MeshBasicMaterial({color: 0xffffff, wireframe: true}));
+  var gridMesh = new THREE.Mesh(grid, new THREE.MeshPhongMaterial({
+    color:0xf1fdd6,
+    specular: 0xdddddd,
+    shininess: 0,
+    roughness: 0,
+    wireframe: true
+  }));
   scene.add(gridMesh);
 
 }
