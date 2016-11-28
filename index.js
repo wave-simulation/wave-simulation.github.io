@@ -18,11 +18,11 @@ var render = function (count) {
   requestAnimationFrame( render );
   controls.update();
   clearScene(scene);
-  initializeRenderData(waveData[Math.floor(count/60)%waveData.length]);
+  initializeRenderData(waveData[Math.floor((count-4000)/60)%waveData.length]);
   renderer.render(scene, camera);
 };
 
-render(0,1);
+render(0);
 
 function initializeRenderData(data) {
   var light = new THREE.PointLight(0xcccccc,1,0);
