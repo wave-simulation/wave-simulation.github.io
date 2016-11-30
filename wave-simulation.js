@@ -46,8 +46,8 @@ const waveSimulation = (() => {
     return p(x-(lattice-1)/2) + p(y-(lattice-1)/2) <= p(lattice/10);
   }
 
-  function createMap(size) {
-    return Array(...Array(size)).map(_=> Array(...Array(size)).map(_=> 0));
+  function createMap(size, fn) {
+    return Array.from({length:size}).map(_=> Array.from({length:size}).map(_=> 0));
   }
 
   function maxOfMatrix(mtx) {
