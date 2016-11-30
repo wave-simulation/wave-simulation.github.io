@@ -47,11 +47,7 @@ const waveSimulation = (() => {
   }
 
   function createMap(size) {
-    let map = [];
-    for (let i = 0; i < size; i++) map.push(
-      Array.apply(null, {length: size}).map(() => 0)
-    );
-    return map;
+    return Array(...Array(size)).map(_=> Array(...Array(size)).map(_=> 0));
   }
 
   function maxOfMatrix(mtx) {
