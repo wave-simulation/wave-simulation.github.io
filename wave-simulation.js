@@ -4,7 +4,7 @@ const waveSimulation = (() => {
   const dt = 0.0005;
   const conductivity = 5;
   const mew = conductivity * dt / dx;
-  const lattice = 40;
+  const lattice = 41;
   const tMax = 1000;
 
   const p = (v) => v * v; //pow
@@ -35,12 +35,15 @@ const waveSimulation = (() => {
       u0 = u1.concat();
       u1 = u2.concat();
     }
-
+    // for (var i = 0; i < 1000; i++) {
+    //   console.log(maxOfMatrix(differentialY(mapLog[i])))
+    // }
+    debugger;
     return mapLog;
   };
 
   function hitSpace(x, y) {
-    return p(x-lattice/2) + p(y-lattice/2) <= p(lattice/10);
+    return p(x-(lattice-1)/2) + p(y-(lattice-1)/2) <= p(lattice/10);
   }
 
   function createMap(size) {
@@ -51,15 +54,18 @@ const waveSimulation = (() => {
     return map;
   }
 
-  // function differentialY(map) {
-  //   map = map.concat();
-  //   for (var i = 0, iLen = map.length; i < iLen; i++) {
-  //     for (var j = 0, jLen = map[i].length; j < jLen; j++) {
-  //       map[i][j] = Math.abs(map[i][j] - map[iLen - 1 - i][j]);
-  //     }
-  //   }
-  //   debugger;
-  //   return map;
-  // }
+  function maxOfMatrix(mtx) {
+    return Math.max(...mtx.map(ary => Math.max(...ary)));
+  }
+
+  function differentialY(map) {
+    var result = createMap(map.length);
+    for (var i = 0, iLen = map.length; i < iLen; i++) {
+      for (var j = 0, jLen = map[i].length; j < jLen; j++) {
+        result[i][j] = map[i][j] - map[iLen - 1 - i][j];
+      }
+    }
+    return result;
+  }
 })();
 // waveSimulation();

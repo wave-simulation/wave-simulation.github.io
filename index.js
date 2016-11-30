@@ -57,7 +57,6 @@ function initializeRenderData(data) {
     color:0xf1fdd6,
     specular: 0xdddddd,
     shininess: 0,
-    roughness: 0,
     wireframe: true
   }));
   scene.add(gridMesh);
