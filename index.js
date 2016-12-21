@@ -18,7 +18,7 @@ var render = function (count) {
   requestAnimationFrame( render );
   controls.update();
   clearScene(scene);
-  initializeRenderData(waveData[Math.floor((count-4000)/180)%waveData.length]);
+  initializeRenderData(waveData[Math.floor((count-4000)/60)%waveData.length]);
   renderer.render(scene, camera);
 };
 
